@@ -1,4 +1,4 @@
-import { Description, Header } from './view/components'
+import { Description, Header, SearchPanel } from './view/components'
 
 export const App = () => {
   return (
@@ -7,6 +7,7 @@ export const App = () => {
 
       <div className={'container mx-auto'}>
         <Description />
+        <SearchPanel />
       </div>
     </div>
   )

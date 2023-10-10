@@ -1,6 +1,6 @@
 import { create, StateCreator } from 'zustand'
 import { getCurrentState, updateLocalStorage } from './utils.ts'
-import { ThemeStore } from '../types/themeStore.ts'
+import { ThemeStore } from '../types'
 import { devtools } from 'zustand/middleware'
 
 const state: StateCreator<ThemeStore, [], [['zustand/devtools', never], ...[]]> = devtools((set, get) => ({

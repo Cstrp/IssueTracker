@@ -1,8 +1,12 @@
 import { StateCreator } from 'zustand'
-import { ThemeStore } from '../types/themeStore.ts'
+import { Issue, IssueStore, ThemeStore } from '../types'
 
 const isThemeStore = (obj: any): obj is ThemeStore => {
   return 'theme' in obj
+}
+
+const isIssueStore = (obj: any): obj is IssueStore => {
+  return 'issues' in obj
 }
 
 export const updateLocalStorage =
@@ -13,6 +17,11 @@ export const updateLocalStorage =
         if (isThemeStore(next)) {
           localStorage.setItem('theme', JSON.stringify(next.theme))
         }
+
+        if (isIssueStore(next)) {
+          localStorage.setItem('issues', JSON.stringify(next.issues))
+        }
+
         set(next, ...args)
       },
       get,
@@ -21,10 +30,13 @@ export const updateLocalStorage =
 
 export const getCurrentState = (key: string) => {
   try {
-    const data = (localStorage.getItem(key) || '') as string
+    const data = (localStorage.getItem(key) || '') as string | Issue[]
 
-    return JSON.parse(data)
+    if (typeof data === 'string') return JSON.parse(data)
+
+    return JSON.parse(localStorage.getItem(key) || '')
   } catch (error) {
+    localStorage.setItem('issues', '[]')
     console.log(error)
   }
 }

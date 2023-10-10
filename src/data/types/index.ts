@@ -1,4 +1,7 @@
 export * from './github_response.ts'
+export * from './formValues.ts'
+export * from './issueStore.ts'
+export * from './themeStore.ts'
 export * from './issue.ts'
 export * from './label.ts'
 export * from './user.ts'

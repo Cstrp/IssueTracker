@@ -1,6 +1,9 @@
 // Export all icons
 export * from './icons/index.ts'
 
+// Export all UI components
+export * from './UI/index.ts'
+
 // Export all components
 export * from './Description/Description.tsx'
 export * from './SearchPanel/SearchPanel.tsx'
